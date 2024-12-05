@@ -10,7 +10,8 @@ Setup Kubernetes (K8s) Cluster on AWS Using KOPS
 #1) Create Ubuntu EC2 instance
 
 #2) install AWSCLI
-
+sudo apt install awscli -y 
+        OR
  sudo apt update -y
  sudo apt install unzip wget -y
  sudo curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
@@ -32,10 +33,12 @@ Setup Kubernetes (K8s) Cluster on AWS Using KOPS
  sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
  sudo chmod +x ./kubectl
  sudo mv ./kubectl /usr/local/bin/kubectl
+#the above 2 lines will install kubectl.the below 2 are not neccessary
  aws s3 mb s3://nubonglegah.k8.local
  aws s3 ls
 
-5) Create an IAM role from Consloe or CLI with below Policies.
+#give kops the permission to create resources in AWS
+#5) Create an IAM role from Consloe or CLI with below Policies and attach it to your ubuntu server..
 
 	AmazonEC2FullAccess 
 	AmazonS3FullAccess
